@@ -73,7 +73,7 @@ node_modules: package.json $(wildcard package-lock.json)
 	@echo Getting dependencies using npm
 
 ifeq ($(CI),false)
-	CPPFLAGS="$(CPPFLAGS)" npm install
+	nvm use && CPPFLAGS=$(CPPFLAGS) npm install
 else
 	# This runs in CI with NODE_ENV=production which skips devDependencies without this flag
 	npm ci --include=dev

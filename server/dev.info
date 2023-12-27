@@ -1,0 +1,35 @@
+User login
+ - user.go (:65)
+ - channels/apiv4/user.go
+
+ User create flow
+
+ - SqlUserStore
+
+
+
+ - UserService
+  channels/app/users/users.go -> CreateUser -> createUser -> Save()
+
+
+ServiceConfig from channels/app/users/service.go is used to initialize the UserService
+
+:215  -> userService initialize
+
+Store is initialized from platform
+
+sqlstore/store.go
+:198 -> user Store initialize
+
+Main Server file : app/server.go
+
+
+How does queries gets executed (create user)
+  query executed on line :96 from (sqlstore/user_store.go)
+
+  with GetMasterX() and NamedExec
+
+  GetMasterX returns pointer to sqlDBWrapper (*sqlDBWrapper)
+
+  sqlDBWrapper is from  sqlx_wrapper.go
+
